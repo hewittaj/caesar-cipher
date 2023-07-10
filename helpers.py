@@ -1,31 +1,60 @@
-alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+alphabet = [
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
+    'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+]
 
-def decrypt(text, shift):
+
+def caesar_cipher(text, shift, direction):
     """
-    Decrypts the text given by shifting the letters back by the declared number.
+    Decrypts or Encrypts the text given by shifting the letters by the declared number and
+    in the direction specified by the user 'e' for encryption 'd' for decryption.
     """
-    decrypted_text = []
+    final_text = []
     new_index = 0
     split_text = list(text)
-    for letter in split_text:
-        index = alphabet.index(letter)
-        new_index = index - shift
-        if new_index < 0:
-            new_index = new_index % 26
-        decrypted_text.append(alphabet[new_index])
-    print(''.join(decrypted_text))
 
-def encrypt(text, shift):
-    """
-    Encrypts the text given by shifting the letters by the declared number.
-    """
-    encrypted_text = []
-    new_index = 0
-    split_text = list(text)
     for letter in split_text:
         index = alphabet.index(letter)
-        new_index = index + shift
-        if new_index > 25:
-            new_index = new_index % 26
-        encrypted_text.append(alphabet[new_index])
-    print(''.join(encrypted_text))
+        # Decrypt text
+        if direction == 'd':
+            new_index = index - shift
+            if new_index < 0:
+                new_index = new_index % 26
+            final_text.append(alphabet[new_index])
+        # Encrypt text
+        elif direction == 'e':
+            new_index = index + shift
+            if new_index > 25:
+                new_index = new_index % 26
+            final_text.append(alphabet[new_index])
+
+        # Invalid option entered
+        else:
+            print("Invalid option entered. Please try again.")
+
+    print(''.join(final_text))
+
+
+# def decrypt(text, shift):
+#     for letter in split_text:
+#         index = alphabet.index(letter)
+#         new_index = index - shift
+#         if new_index < 0:
+#             new_index = new_index % 26
+#         decrypted_text.append(alphabet[new_index])
+#     print(''.join(decrypted_text))
+
+# def encrypt(text, shift):
+#     """
+#     Encrypts the text given by shifting the letters by the declared number.
+#     """
+#     encrypted_text = []
+#     new_index = 0
+#     split_text = list(text)
+#     for letter in split_text:
+#         index = alphabet.index(letter)
+#         new_index = index + shift
+#         if new_index > 25:
+#             new_index = new_index % 26
+#         encrypted_text.append(alphabet[new_index])
+#     print(''.join(encrypted_text))
