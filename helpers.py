@@ -33,28 +33,3 @@ def caesar_cipher(text, shift, direction):
             print("Invalid option entered. Please try again.")
 
     print(''.join(final_text))
-
-
-# def decrypt(text, shift):
-#     for letter in split_text:
-#         index = alphabet.index(letter)
-#         new_index = index - shift
-#         if new_index < 0:
-#             new_index = new_index % 26
-#         decrypted_text.append(alphabet[new_index])
-#     print(''.join(decrypted_text))
-
-# def encrypt(text, shift):
-#     """
-#     Encrypts the text given by shifting the letters by the declared number.
-#     """
-#     encrypted_text = []
-#     new_index = 0
-#     split_text = list(text)
-#     for letter in split_text:
-#         index = alphabet.index(letter)
-#         new_index = index + shift
-#         if new_index > 25:
-#             new_index = new_index % 26
-#         encrypted_text.append(alphabet[new_index])
-#     print(''.join(encrypted_text))
