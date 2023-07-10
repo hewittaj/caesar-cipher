@@ -13,23 +13,14 @@ def caesar_cipher(text, shift, direction):
     new_index = 0
     split_text = list(text)
 
+    if direction == 'd':
+        shift *= -1
+        
     for letter in split_text:
         index = alphabet.index(letter)
-        # Decrypt text
-        if direction == 'd':
-            new_index = index - shift
-            if new_index < 0:
-                new_index = new_index % 26
-            final_text.append(alphabet[new_index])
-        # Encrypt text
-        elif direction == 'e':
-            new_index = index + shift
-            if new_index > 25:
-                new_index = new_index % 26
-            final_text.append(alphabet[new_index])
-
-        # Invalid option entered
-        else:
-            print("Invalid option entered. Please try again.")
+        new_index = index + shift
+        if new_index < 0 or new_index > 25:
+            new_index = new_index % 26
+        final_text.append(alphabet[new_index])
 
     print(''.join(final_text))
